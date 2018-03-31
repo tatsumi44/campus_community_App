@@ -40,6 +40,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
         db.collection("matchProduct").whereField("exhibitorID", isEqualTo: uid).getDocuments { (snap, error) in
             
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 for document in (snap?.documents)!{
@@ -75,6 +76,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
         print("refは\(ref)")
         ref.downloadURL { url, error in
             if let error = error {
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
                 // Handle any errors
             } else {
@@ -83,6 +85,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
                 imageView.sd_setImage(with: url!, completed: nil)
                 self.db.collection("users").document(self.cellDetailArray[indexPath.row].buyerID).getDocument(completion: { (snap, error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print("\(error)")
                     }else{
                         let data = snap?.data()
@@ -93,6 +96,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
                 
                 self.db.collection(self.cellDetailArray[indexPath.row].sectionID).document(self.cellDetailArray[indexPath.row].productID).getDocument(completion: { (snap, error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print(error.localizedDescription)
                     }else{
                         let data = snap?.data()

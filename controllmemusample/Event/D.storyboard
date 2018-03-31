@@ -151,15 +151,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CtT-Jr-fWl">
+                            <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CtT-Jr-fWl">
                                 <rect key="frame" x="0.0" y="247" width="375" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="RIB-05-cOz">
+                                    <rect key="frame" x="0.0" y="89" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="61" id="hBd-x4-Cfq">
                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hBd-x4-Cfq" id="7Lb-YL-7Mx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-c2-e2c">
@@ -235,7 +240,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="EFh-EW-2J5" firstAttribute="leading" secondItem="Cxk-uJ-RQp" secondAttribute="leading" constant="5" id="2oF-tU-SjV"/>
                                     <constraint firstAttribute="trailing" secondItem="fAd-GT-O5y" secondAttribute="trailing" constant="200" id="5jT-GC-VL6"/>
@@ -335,38 +340,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="団体名、サークル名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-7d-dTO">
-                                <rect key="frame" x="16" y="103" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="団体名、サークル名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-7d-dTO">
+                                <rect key="frame" x="16" y="84" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="APi-bd-n2H">
-                                <rect key="frame" x="16" y="363" width="343" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-ec-DAt">
+                                <rect key="frame" x="20" y="411" width="335" height="166"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-JB-uwk">
+                                        <rect key="frame" x="8" y="8" width="307" height="21"/>
+                                        <string key="text">イベント情報を200文字以内で記入
+してください</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="APi-bd-n2H">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="166"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="イベントの日時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rQ-Cjm">
-                                <rect key="frame" x="40" y="153" width="295" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gl1-JB-uwk" secondAttribute="trailing" constant="20" id="LV6-5B-lt0"/>
+                                    <constraint firstItem="gl1-JB-uwk" firstAttribute="leading" secondItem="fDX-ec-DAt" secondAttribute="leading" constant="8" id="Ozk-aw-aix"/>
+                                    <constraint firstAttribute="bottom" secondItem="APi-bd-n2H" secondAttribute="bottom" id="Qa1-RQ-abW"/>
+                                    <constraint firstItem="APi-bd-n2H" firstAttribute="top" secondItem="fDX-ec-DAt" secondAttribute="top" id="bsj-Vp-Jwt"/>
+                                    <constraint firstItem="APi-bd-n2H" firstAttribute="leading" secondItem="fDX-ec-DAt" secondAttribute="leading" id="csu-as-Bzn"/>
+                                    <constraint firstAttribute="trailing" secondItem="APi-bd-n2H" secondAttribute="trailing" id="qCy-xT-rMK"/>
+                                    <constraint firstItem="gl1-JB-uwk" firstAttribute="top" secondItem="fDX-ec-DAt" secondAttribute="top" constant="8" id="que-sK-SIe"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="イベントの日時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rQ-Cjm">
+                                <rect key="frame" x="40" y="134" width="295" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YvE-LB-FsP">
-                                <rect key="frame" x="0.0" y="185" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YvE-LB-FsP">
+                                <rect key="frame" x="0.0" y="175" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="542025753.02769995">
                                     <!--2018-03-06 10:42:33 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="ja_JP"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-U8-faH">
-                                <rect key="frame" x="75" y="548" width="235" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-U8-faH">
+                                <rect key="frame" x="70" y="607" width="235" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="投稿">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -375,17 +398,26 @@
                                     <action selector="post:" destination="lnP-J4-cPs" eventType="touchUpInside" id="x9C-c4-uHw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-JB-uwk">
-                                <rect key="frame" x="26" y="379" width="333" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">イベント情報を200文字以内で記入
-してください</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="38f-cw-7tz" firstAttribute="trailing" secondItem="973-U8-faH" secondAttribute="trailing" constant="70" id="6M2-sc-uMW"/>
+                            <constraint firstItem="973-U8-faH" firstAttribute="top" secondItem="fDX-ec-DAt" secondAttribute="bottom" constant="30" id="DZv-WK-wkW"/>
+                            <constraint firstItem="YvE-LB-FsP" firstAttribute="top" secondItem="DqK-rQ-Cjm" secondAttribute="bottom" constant="17" id="Kcv-Gw-kwP"/>
+                            <constraint firstItem="973-U8-faH" firstAttribute="leading" secondItem="38f-cw-7tz" secondAttribute="leading" constant="70" id="OuB-i2-yfw"/>
+                            <constraint firstItem="YvE-LB-FsP" firstAttribute="trailing" secondItem="38f-cw-7tz" secondAttribute="trailing" id="TjJ-yo-NAh"/>
+                            <constraint firstItem="YvE-LB-FsP" firstAttribute="leading" secondItem="38f-cw-7tz" secondAttribute="leading" id="UVP-ad-g0k"/>
+                            <constraint firstItem="38f-cw-7tz" firstAttribute="trailing" secondItem="TGC-7d-dTO" secondAttribute="trailing" constant="16" id="beA-hy-mXO"/>
+                            <constraint firstItem="38f-cw-7tz" firstAttribute="trailing" secondItem="DqK-rQ-Cjm" secondAttribute="trailing" constant="40" id="dwu-52-46S"/>
+                            <constraint firstItem="fDX-ec-DAt" firstAttribute="leading" secondItem="38f-cw-7tz" secondAttribute="leading" constant="20" id="eq2-tf-KQD"/>
+                            <constraint firstItem="DqK-rQ-Cjm" firstAttribute="top" secondItem="TGC-7d-dTO" secondAttribute="bottom" constant="20" id="g40-sK-bat"/>
+                            <constraint firstItem="DqK-rQ-Cjm" firstAttribute="leading" secondItem="38f-cw-7tz" secondAttribute="leading" constant="40" id="iFt-r0-eNx"/>
+                            <constraint firstItem="38f-cw-7tz" firstAttribute="trailing" secondItem="fDX-ec-DAt" secondAttribute="trailing" constant="20" id="iTy-QU-g0V"/>
+                            <constraint firstItem="TGC-7d-dTO" firstAttribute="top" secondItem="38f-cw-7tz" secondAttribute="top" constant="20" id="idq-R2-fd5"/>
+                            <constraint firstItem="fDX-ec-DAt" firstAttribute="top" secondItem="YvE-LB-FsP" secondAttribute="bottom" constant="20" id="oWZ-07-hty"/>
+                            <constraint firstItem="38f-cw-7tz" firstAttribute="bottom" secondItem="973-U8-faH" secondAttribute="bottom" constant="30" id="t46-ec-4IR"/>
+                            <constraint firstItem="TGC-7d-dTO" firstAttribute="leading" secondItem="38f-cw-7tz" secondAttribute="leading" constant="16" id="yNi-Kt-7I8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="38f-cw-7tz"/>
                     </view>
                     <connections>

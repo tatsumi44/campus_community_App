@@ -55,6 +55,7 @@ class ChatDetailViewController: MessagesViewController{
             db = Firestore.firestore()
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     let data = snap?.data()
@@ -63,6 +64,7 @@ class ChatDetailViewController: MessagesViewController{
                     self.sender = Sender(id: uid, displayName: self.myName)
                     self.db.collection("users").document(self.cellDetailArray[self.cellOfNum].exhibitorID).getDocument(completion: { (snap, error) in
                         if let error = error{
+                            self.alert(message: error.localizedDescription)
                             print(error.localizedDescription)
                         }else{
                             let data = snap?.data()
@@ -71,6 +73,7 @@ class ChatDetailViewController: MessagesViewController{
                             if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
                                 storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
                                     if let error = error{
+                                        self.alert(message: error.localizedDescription)
                                         print(error.localizedDescription)
                                     }else{
                                         self.myPath = url
@@ -79,6 +82,7 @@ class ChatDetailViewController: MessagesViewController{
                                 })
                                 storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
                                     if let error = error{
+                                        self.alert(message: error.localizedDescription)
                                         print(error.localizedDescription)
                                     }else{
                                         self.otherPath = url

@@ -29,6 +29,7 @@ class MyPostEventListViewController: UIViewController,UITableViewDataSource,UITa
         if let uid = Auth.auth().currentUser?.uid{
             db.collection("event").whereField("postUser", isEqualTo: uid).getDocuments(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     for document in (snap?.documents)!{
@@ -70,6 +71,7 @@ class MyPostEventListViewController: UIViewController,UITableViewDataSource,UITa
             eventArray.remove(at: indexPath.row)
             db.collection("event").document(eventID).delete(completion: { (error) in
                 if let error = error {
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     print("remove succesfully")
@@ -77,9 +79,6 @@ class MyPostEventListViewController: UIViewController,UITableViewDataSource,UITa
                     print("削除完了")
                 }
             })
-            
         }
     }
-    
-
 }

@@ -41,6 +41,7 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
         db.collection("matchProduct").whereField("buyerID", isEqualTo: uid).getDocuments { (snap, error) in
             
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 for document in (snap?.documents)!{
@@ -76,6 +77,7 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
         print("refは\(ref)")
         ref.downloadURL { url, error in
             if let error = error {
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             } else {
                 print(url!)
@@ -83,6 +85,7 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
                 imageView.sd_setImage(with: url!, completed: nil)
                 self.db.collection("users").document(self.cellDetailArray[indexPath.row].exhibitorID).getDocument(completion: { (snap, error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print("\(error)")
                     }else{
                         let data = snap?.data()
@@ -91,6 +94,7 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
                     }
                     self.db.collection(self.cellDetailArray[indexPath.row].sectionID).document(self.cellDetailArray[indexPath.row].productID).getDocument(completion: { (snap, error) in
                         if let error = error{
+                            self.alert(message: error.localizedDescription)
                             print(error.localizedDescription)
                         }else{
                             let data = snap?.data()

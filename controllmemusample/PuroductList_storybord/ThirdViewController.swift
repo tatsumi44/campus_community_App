@@ -45,6 +45,7 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         db1 = Firestore.firestore()
         db1.collection("3").getDocuments { (snap, error) in
             if let error = error{
+                self.alert(message: "Error getting documents: \(error.localizedDescription)")
                 print("Error getting documents: \(error)")
             }else{
                 for document in snap!.documents {
@@ -104,6 +105,7 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         //getmainArrayにあるpathをurl型に変換しimageViewに描画
         getmainArray[indexPath.row].downloadURL { url, error in
             if let error = error {
+                self.alert(message: error.localizedDescription)
                 print(error.localizedDescription)
                 // Handle any errors
             } else {

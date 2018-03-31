@@ -8,14 +8,11 @@
 
 import UIKit
 import Firebase
-class EventDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class EventDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     
     @IBOutlet weak var chatPostTextField: UITextField!
-    
-    
     @IBOutlet weak var mainTable: UITableView!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDate: UILabel!
@@ -35,16 +32,21 @@ class EventDetailViewController: UIViewController,UITableViewDataSource,UITableV
     @IBOutlet weak var labelView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(showingKeybord), name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hidingKeyboard), name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
+
         mainTable.delegate = self
         mainTable.dataSource = self
+        chatPostTextField.delegate = self
         labelView.layer.borderColor = UIColor.orange.cgColor
-        labelView.layer.borderWidth = 1.0
+        labelView.layer.borderWidth = 5.0
         labelView.layer.cornerRadius = 5.0
         labelView.layer.masksToBounds = true
         db = Firestore.firestore()
         if let uid = Auth.auth().currentUser?.uid{
             db.collection("users").document(uid).getDocument(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print(error.localizedDescription)
                 }else{
                     let data = snap?.data()
@@ -58,6 +60,7 @@ class EventDetailViewController: UIViewController,UITableViewDataSource,UITableV
         postName.text = event.postUserName
         profilePath.downloadURL { url, error in
             if let error = error {
+                self.alert(message: error.localizedDescription)
                 print(error.localizedDescription)
                 // Handle any errors
             } else {
@@ -94,6 +97,7 @@ class EventDetailViewController: UIViewController,UITableViewDataSource,UITableV
     @IBAction func post(_ sender: UIButton) {
         
         guard chatPostTextField.text != "" else {
+            self.alert(message: "何か入力してください")
             print("何か入力してください")
             return
         }
@@ -118,6 +122,10 @@ class EventDetailViewController: UIViewController,UITableViewDataSource,UITableV
         }
         
         return cell
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     

@@ -52,6 +52,7 @@ class ChatViewController: MessagesViewController{
             let storage = Storage.storage().reference()
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     let data = snap?.data()
@@ -60,6 +61,7 @@ class ChatViewController: MessagesViewController{
                     
                     self.db.collection("users").document(self.exhibitorID).getDocument(completion: { (snap, error) in
                         if let error = error{
+                            self.alert(message: error.localizedDescription)
                             print(error.localizedDescription)
                         }else{
                             let data = snap?.data()
@@ -67,6 +69,7 @@ class ChatViewController: MessagesViewController{
                             if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
                                 storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
                                     if let error = error{
+                                        self.alert(message: error.localizedDescription)
                                         print(error.localizedDescription)
                                     }else{
                                         self.myPath = url
@@ -75,6 +78,7 @@ class ChatViewController: MessagesViewController{
                                 })
                                 storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
                                     if let error = error{
+                                        self.alert(message: error.localizedDescription)
                                         print(error.localizedDescription)
                                     }else{
                                         self.otherPath = url
@@ -90,6 +94,7 @@ class ChatViewController: MessagesViewController{
             }
             db.collection("matchProduct").whereField("exhibitorID", isEqualTo: exhibitorID).whereField("buyerID", isEqualTo: uid).whereField("productID", isEqualTo: productid).getDocuments { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     

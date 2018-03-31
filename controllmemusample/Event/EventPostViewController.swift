@@ -25,6 +25,10 @@ class EventPostViewController: UIViewController,UITextViewDelegate,UITextFieldDe
         detailTextField.layer.borderWidth = 0.3
         detailTextField.delegate = self
         titleTextField.delegate = self
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        detailTextField.inputAccessoryView = toolbar
+        toolbar.setItems([doneItem], animated: true)
    // Do any additional setup after loading the view.
     }
 
@@ -36,6 +40,8 @@ class EventPostViewController: UIViewController,UITextViewDelegate,UITextFieldDe
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         detailText.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(showingKeybord), name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hidingKeyboard), name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
         print("開始")
         return true
     }
@@ -43,6 +49,7 @@ class EventPostViewController: UIViewController,UITextViewDelegate,UITextFieldDe
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("終了")
+        NotificationCenter.default.removeObserver(self)
         if (detailTextField.text?.isEmpty)!{
             detailText.isHidden = false
             print("ここまで呼ばれている")
@@ -53,14 +60,17 @@ class EventPostViewController: UIViewController,UITextViewDelegate,UITextFieldDe
     @IBAction func post(_ sender: Any) {
         
         guard detailTextField.text.characters.count < 200 else {
+            self.alert(message: "文字数が多すぎます")
             print("文字数が多すぎます")
             return
         }
         guard detailTextField.text != "" else{
+            self.alert(message: "詳細を入力してください")
             print("何か入力してください")
             return
         }
         guard titleTextField.text != "" else {
+            self.alert(message: "タイトルを入力してください")
             print("何か入力してください")
             return
         }
@@ -85,12 +95,9 @@ class EventPostViewController: UIViewController,UITextViewDelegate,UITextFieldDe
         textField.resignFirstResponder()
         return true
     }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            detailTextField.resignFirstResponder() //キーボードを閉じる
-            return false
-        }
-        return true
+    @objc func done(){
+        detailTextField.resignFirstResponder() 
     }
+    
+
 }

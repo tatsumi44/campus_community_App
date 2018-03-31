@@ -33,6 +33,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
         if let uid = Auth.auth().currentUser?.uid{
             db.collection("1").whereField("uid", isEqualTo: "\(uid)").getDocuments(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     for document in (snap?.documents)!{
@@ -43,6 +44,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             })
             db.collection("2").whereField("uid", isEqualTo: "\(uid)").getDocuments(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     for document in (snap?.documents)!{
@@ -53,6 +55,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             })
             db.collection("3").whereField("uid", isEqualTo: "\(uid)").getDocuments(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     for document in (snap?.documents)!{
@@ -104,6 +107,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             let ref = storage.child("image/goods/\(imagePath)")
             ref.downloadURL { url, error in
                 if let error = error {
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                     // Handle any errors
                 } else {
@@ -120,6 +124,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             let ref = storage.child("image/goods/\(imagePath)")
             ref.downloadURL { url, error in
                 if let error = error {
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                     // Handle any errors
                 } else {
@@ -136,6 +141,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             let ref = storage.child("image/goods/\(imagePath)")
             ref.downloadURL { url, error in
                 if let error = error {
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                     // Handle any errors
                 } else {
@@ -158,6 +164,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 textBookArray.remove(at: indexPath.row)
                 db.collection("1").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print("\(error)")
                     }else{
                         print("Document successfully removed!")
@@ -169,6 +176,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 noteBookArray.remove(at: indexPath.row)
                 db.collection("2").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print("\(error)")
                     }else{
                         print("Document successfully removed!")
@@ -180,6 +188,7 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 pastExaminatioArray.remove(at: indexPath.row)
                 db.collection("3").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
+                        self.alert(message: error.localizedDescription)
                         print("\(error)")
                     }else{
                         print("Document successfully removed!")

@@ -35,6 +35,7 @@ class CurriculumEvaluationViewController: UIViewController,UITableViewDataSource
         db = Firestore.firestore()
         db.collection("courseEvaluation").getDocuments { (snap, error) in
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 for document in (snap?.documents)!{

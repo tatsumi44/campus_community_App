@@ -46,13 +46,18 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         //db接続
         if user != nil{
             db.collection("users").document(uid).getDocument { (snap, error) in
-                let data = snap?.data()
-                let name = data!["name"] as? String
-                let course = data!["course"] as? String
-                let grade = data!["grade"] as? String
-                self.profielArray = ["\(name!)さん","\(course!)学部","\(grade!)年生"]
-                print(self.profielArray)
-                self.mainTableView.reloadData()
+                if let error = error{
+                    self.alert(message: error.localizedDescription)
+                }else{
+                    let data = snap?.data()
+                    let name = data!["name"] as? String
+                    let course = data!["course"] as? String
+                    let grade = data!["grade"] as? String
+                    self.profielArray = ["\(name!)さん","\(course!)学部","\(grade!)年生"]
+                    print(self.profielArray)
+                    self.mainTableView.reloadData()
+                }
+
             }
         }else{
             let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
@@ -65,6 +70,7 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
             
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     let data = snap?.data()
@@ -184,7 +190,8 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
             print("通っている")
             
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+//            alert(message: ("Error signing out: %@", signOutError.))
+            print ("Error signing out: %@", signOutError.localizedDescription)
         }
     }
     
@@ -212,7 +219,7 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         
         db.collection("users").document(uid).updateData(["profilePath" : "\(datePath)_\(uid!).jpg"]) { (error) in
             if let error = error{
-                
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
                 
             }else{

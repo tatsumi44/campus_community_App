@@ -46,8 +46,10 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
         productDetailTextField.delegate = self
         productDetailTextField.layer.borderColor = UIColor.black.cgColor
         productDetailTextField.layer.borderWidth = 1.0
-        
-        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        productDetailTextField.inputAccessoryView = toolbar
+        toolbar.setItems([doneItem], animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,6 +117,7 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
 //            db.collection("\(categorynum!)").document(uid).setData(["image\(self.imageNumber)" : "\(datePath).jpg"], options: SetOptions.merge())
             let uploadTask = imagePath.putData(imageData, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
+                    self.alert(message: "アップロード失敗")
                     print("アップロード失敗")
                     // Uh-oh, an error occurred!
                     return
@@ -127,22 +130,27 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
         }
         photoCount = imageArray.count
         guard imageArray.count != 0 else{
+            self.alert(message: "画像を選択してください")
             print("画像を選択してください")
             return
         }
         guard productNameTextField.text != "" else {
+            self.alert(message: "名前を決定してください")
             print("名前を決定してください")
             return
         }
         guard priceTextField.text != "" else {
+            self.alert(message: "価格を決定してください")
             print("価格を決定してください")
             return
         }
         guard getProductDecideTextField.text != "" else {
+            self.alert(message: "場所を決定してください")
             print("場所を決定してください")
             return
         }
         guard productDetailTextField.text != "" else {
+            self.alert(message: "詳細を決定してください")
             print("詳細を決定してください")
             return
         }
@@ -167,13 +175,10 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
         textField.resignFirstResponder()
         return true
     }
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            productDetailTextField.resignFirstResponder() //キーボードを閉じる
-            return false
-        }
-        return true
+    @objc func done(){
+        productDetailTextField.resignFirstResponder() //キーボードを閉じる
     }
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -189,4 +194,15 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
+
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showingKeybord), name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hidingKeyboard), name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
+        return true
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        NotificationCenter.default.removeObserver(self)
+        return true
+    }
+
 }

@@ -30,7 +30,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBAction func loginButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if let error = error{
-                print("\(error)")
+                self.alert(message: error.localizedDescription)
                 //後でアラートとか書こうと思ったり
             }else{
                 if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController  {

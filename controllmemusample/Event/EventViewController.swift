@@ -33,6 +33,7 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
         maintableView.separatorColor = UIColor.clear
         self.db.collection("event").getDocuments { (snap, error) in
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print(error.localizedDescription)
             }else{
                 for document in (snap?.documents)!{
@@ -75,6 +76,7 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
         dateLabel.text = self.eventArray[indexPath.row].eventDate
         db.collection("users").document(eventArray[indexPath.row].postUserID).getDocument { (snap, error) in
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 let data = snap?.data()
@@ -87,6 +89,7 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 self.profilePath = storage.child("image/profile/\(imagePath!)")
                 path.downloadURL { url, error in
                     if let error = error {
+                        self.alert(message: error.localizedDescription)
                         print(error.localizedDescription)
                         // Handle any errors
                     } else {

@@ -78,6 +78,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     
         db1.collection("1").getDocuments { (snap, error) in
             if let error = error{
+                self.alert(message: "Error getting documents: \(error.localizedDescription)")
                 print("Error getting documents: \(error)")
             }else{
                 for document in snap!.documents {
@@ -106,21 +107,12 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        do {
-//            try Auth.auth().signOut()
-//            //指定したStorybordの一番最初に画面遷移
-//            let storybord: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-//            let nextView = storybord.instantiateInitialViewController()
-//            present(nextView!, animated: true, completion: nil)
-//            print("通っている")
-//
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
+
         db1 = Firestore.firestore()
         if let uid = Auth.auth().currentUser?.uid{
             db1.collection("users").document(uid).getDocument(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                   let data = snap?.data()

@@ -66,6 +66,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
             db = Firestore.firestore()
             db.collection("users").document(uid).getDocument(completion: { (snap, error) in
                 if let error = error{
+                    self.alert(message: error.localizedDescription)
                     print("\(error)")
                 }else{
                     print("ストップ2")
@@ -102,6 +103,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
         }
         db.collection("users").document(exhibitationID).getDocument { (snap, error) in
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 let data = snap?.data()
@@ -223,6 +225,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
     func imagePrint() {
         getmainArray[imageNum].downloadURL { (url, error) in
             if let error = error{
+                self.alert(message: error.localizedDescription)
                 print("\(error)")
             }else{
                 self.imageView.sd_setImage(with: url!, completed: nil)

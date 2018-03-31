@@ -70,6 +70,8 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
         pickerView6.delegate = self
         pickerView7.delegate = self
         courseDetailTextField.delegate = self
+        classNameTextField.delegate = self
+        teacherNameTextField.delegate = self
         yearSelectTextField.inputView = pickerView
         courseSelectTextField.inputView = pickerView1
         attendanceTextField.inputView = pickerView2
@@ -92,7 +94,7 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
         courseDetailTextField.inputAccessoryView = toolbar
         middleExamination.inputAccessoryView = toolbar
         finalExamination.inputAccessoryView = toolbar
-        
+        courseDetailTextField.inputAccessoryView = toolbar
         classNameTextField.layer.borderColor = UIColor.black.cgColor
         classNameTextField.layer.borderWidth = 0.3
         courseDetailTextField.layer.borderColor = UIColor.black.cgColor
@@ -196,46 +198,57 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
         db = Firestore.firestore()
         if let uid = Auth.auth().currentUser?.uid{
             guard classNameTextField.text != "" else{
+                self.alert(message: "クラスの名前を入力してください" )
                 print("クラスの名前を入力してください")
                 return
             }
             guard teacherNameTextField.text != "" else{
-                print("年度を打ち込んで")
+                 self.alert(message: "先生の名前を打ち込んで" )
+                print("を打ち込んで")
                 return
             }
             guard yearSelectTextField.text != "" else{
+                 self.alert(message: "年度を打ち込んで" )
                 print("年度を打ち込んで")
                 return
             }
             guard courseSelectTextField.text != "" else {
-                print("コースを打ち込んで")
+                 self.alert(message: "年度を打ち込んで")
+                print("年度を打ち込んで")
                 return
             }
             guard  attendanceTextField.text != "" else {
-                print("出席情報を打ち込んで")
+                 self.alert(message: "年度を打ち込んで")
+                print("年度を打ち込んで")
                 return
             }
             guard textbookTextField.text != "" else {
+                 self.alert(message: "教科書の有無を打ち込んで")
                 print("教科書の有無を打ち込んで")
                 return
             }
             guard courseEvaluationTextField.text != "" else {
+                 self.alert(message: "評価を打ち込んで")
                 print("評価を打ち込んで")
                 return
             }
             guard difflenceTextField.text != "" else {
+                 self.alert(message: "難易度を打ち込んで")
                 print("難易度を打ち込んで")
                 return
             }
             guard courseDetailTextField.text != "" else {
+                 self.alert(message: "詳細を打ち込んで")
                 print("詳細を打ち込んで")
                 return
             }
             guard middleExamination.text != "" else {
+                 self.alert(message: "中間試験の詳細を打ち込んで")
                 print("中間試験の詳細を打ち込んで")
                 return
             }
             guard finalExamination.text != "" else {
+                 self.alert(message: "期末試験の詳細を打ち込んで")
                 print("期末試験の詳細を打ち込んで")
                 return
             }
@@ -265,6 +278,8 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         detailText.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(showingKeybord), name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hidingKeyboard), name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
         print("開始")
         return true
     }
@@ -272,11 +287,15 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("終了")
+        NotificationCenter.default.removeObserver(self)
         if (courseDetailTextField.text?.isEmpty)!{
             detailText.isHidden = false
             print("ここまで呼ばれている")
         }
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
