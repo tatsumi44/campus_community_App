@@ -350,6 +350,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0eW-Vy-c9N"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eNS-gF-JZC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="flag" id="5s4-so-jq3">
+                            <connections>
+                                <action selector="report:" destination="DhY-Xt-vEO" id="YyZ-Gg-KN3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="className" destination="xLa-fZ-Sr4" id="YPo-zg-rxY"/>
                         <outlet property="course" destination="J99-Pn-qfJ" id="7nz-Q7-YA6"/>
@@ -358,11 +365,12 @@
                         <outlet property="mainTable" destination="yKF-Gu-Yo6" id="eKv-Lw-pUn"/>
                         <outlet property="teacherName" destination="BFX-cw-1nf" id="sA9-Yz-saG"/>
                         <outlet property="year" destination="TNy-Yg-bbL" id="Kf0-wQ-AAN"/>
+                        <segue destination="M7w-V8-qqH" kind="show" identifier="go" id="TxH-Jm-9Bo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trx-kS-ShJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232.80000000000001" y="836.13193403298362"/>
+            <point key="canvasLocation" x="181" y="1125"/>
         </scene>
         <!--Class Sarch View Controller-->
         <scene sceneID="XfK-AC-41z">
@@ -501,6 +509,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHw-xj-N4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1096.8" y="842.42878560719646"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="e3d-dK-Jqv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Report" id="M7w-V8-qqH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOl-nE-abU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1606" y="1674"/>
         </scene>
         <!--Search List View Controller-->
         <scene sceneID="Oha-on-Ohw">
@@ -823,6 +839,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wxz-BF-MN8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qdG-sy-hEA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="flag" id="2ef-qc-WgQ">
+                            <connections>
+                                <action selector="report:" destination="7hm-pl-ulx" id="C6N-vK-aMj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="className" destination="0T0-Km-Xiu" id="yMn-8O-VYQ"/>
                         <outlet property="course" destination="71R-f5-y1K" id="FY4-hJ-Iko"/>
@@ -831,6 +854,7 @@
                         <outlet property="mainTable" destination="khD-Nu-I2k" id="k9O-XU-rjQ"/>
                         <outlet property="teacherName" destination="4bl-mu-k3m" id="F6R-70-srh"/>
                         <outlet property="year" destination="ZL8-zE-dsP" id="aug-h9-Z8i"/>
+                        <segue destination="M7w-V8-qqH" kind="show" identifier="gogo" id="pRk-F5-9wA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUH-fB-k0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1014,5 +1038,9 @@
     </scenes>
     <resources>
         <image name="Post.png" width="32" height="32"/>
+        <image name="flag" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pRk-F5-9wA"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -100,6 +100,12 @@ class SearchDeatilViewController: UIViewController,UITableViewDelegate,UITableVi
         }
     }
     
+    @IBAction func report(_ sender: Any) {
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = evaluation.evaluationId
+        appDelegate.segment = "evluationReport"
+        performSegue(withIdentifier: "gogo", sender: nil)
+    }
     
 
 

@@ -40,7 +40,7 @@ class CurriculumEvaluationViewController: UIViewController,UITableViewDataSource
             }else{
                 for document in (snap?.documents)!{
                     let data = document.data()
-                             self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+                    self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String, evaluationId: document.documentID))
                 }
                 self.mainTable.reloadData()
             }

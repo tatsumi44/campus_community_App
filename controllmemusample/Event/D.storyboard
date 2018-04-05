@@ -317,6 +317,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NF0-AX-q6M"/>
                     </view>
+                    <navigationItem key="navigationItem" id="08d-9l-xcC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="flag" id="0u2-Ll-XcF">
+                            <connections>
+                                <action selector="report:" destination="YZt-0u-uIg" id="Dg4-fv-Dpk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chatPostTextField" destination="nND-FX-1LR" id="sy7-ca-r5x"/>
                         <outlet property="eventDate" destination="fuD-ye-k1R" id="Vch-FV-WjQ"/>
@@ -326,11 +333,20 @@
                         <outlet property="labelView" destination="Cxk-uJ-RQp" id="VmW-M7-ZvU"/>
                         <outlet property="mainTable" destination="CtT-Jr-fWl" id="9dy-3s-Frw"/>
                         <outlet property="postName" destination="fAd-GT-O5y" id="6Ti-LB-JeI"/>
+                        <segue destination="pUG-rw-pkf" kind="show" identifier="go" id="qC6-yI-q6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbQ-N9-c8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860" y="647.22638680659679"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="5jS-gD-rGe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Report" id="pUG-rw-pkf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8rg-qx-cBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="533"/>
         </scene>
         <!--Event Post View Controller-->
         <scene sceneID="Fe8-L4-3As">
@@ -452,5 +468,6 @@
     </scenes>
     <resources>
         <image name="Post.png" width="32" height="32"/>
+        <image name="flag" width="32" height="32"/>
     </resources>
 </document>

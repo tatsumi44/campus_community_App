@@ -128,5 +128,11 @@ class EventDetailViewController: UIViewController,UITableViewDataSource,UITableV
         return true
     }
     
+    @IBAction func report(_ sender: Any) {
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = event.EventID
+        appDelegate.segment = "eventReport"
+        performSegue(withIdentifier: "go", sender: nil)
+    }
     
 }

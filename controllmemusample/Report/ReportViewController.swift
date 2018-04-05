@@ -14,7 +14,7 @@ class ReportViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBOutlet weak var mainTable: UITableView!
     var numOfCell:Int!
-
+    
     var db:Firestore!
     var contents: String!
     override func viewDidLoad() {
@@ -22,11 +22,11 @@ class ReportViewController: UIViewController,UITableViewDataSource,UITableViewDe
         mainTable.delegate = self
         mainTable.dataSource = self
         mainTable.allowsMultipleSelection = false
- 
-
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,7 +69,7 @@ class ReportViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
             if let id = appDelegate.id,let segment = appDelegate.segment{
-                self.db.collection("report").document(segment).setData([
+                self.db.collection(segment).addDocument(data: [
                     "productID" : id,
                     "reportContents": self.contents
                     ])
@@ -78,11 +78,11 @@ class ReportViewController: UIViewController,UITableViewDataSource,UITableViewDe
             }else{
                 print("error")
             }
-
+            
             
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
+        
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)

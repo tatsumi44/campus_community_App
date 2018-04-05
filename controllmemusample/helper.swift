@@ -12,10 +12,8 @@ extension UIViewController{
     
     @objc func  showingKeybord(notification: Notification) {
         if let keybordHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height{
-            
             self.view.frame.origin.y = -keybordHeight 
         }
-        
     }
     
     @objc func hidingKeyboard(){
@@ -49,5 +47,4 @@ extension UIViewController{
             return "error"
         }
     }
-    
 }

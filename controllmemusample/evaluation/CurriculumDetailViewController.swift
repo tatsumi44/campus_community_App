@@ -96,12 +96,17 @@ class CurriculumDetailViewController: UIViewController,UITableViewDelegate,UITab
             headerTitle.textLabel?.textColor = UIColor.orange
         }
     }
-    
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func report(_ sender: Any) {
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = evaluation.evaluationId
+        appDelegate.segment = "evluationReport"
+        performSegue(withIdentifier: "go", sender: nil)
+    }
+    
     
 }

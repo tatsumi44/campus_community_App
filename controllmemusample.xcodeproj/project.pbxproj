@@ -292,6 +292,15 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		B985DEB52076135F00EDE6CF /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				B985DEB12075F8CE00EDE6CF /* ReportViewController.swift */,
+				B985DEB32075F8E900EDE6CF /* Report.storyboard */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		B9D7D8D1203F2FA00028EF07 = {
 			isa = PBXGroup;
 			children = (
@@ -331,9 +340,8 @@
 				B97F9CF7204EA0C100EADB20 /* Event */,
 				B93C8AF72051172A007ABFA7 /* evaluation */,
 				B9FCD6C42058F26C0022EB9E /* MyPostList */,
+				B985DEB52076135F00EDE6CF /* Report */,
 				B9135E48206F673B00A87593 /* helper.swift */,
-				B985DEB12075F8CE00EDE6CF /* ReportViewController.swift */,
-				B985DEB32075F8E900EDE6CF /* Report.storyboard */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";

@@ -21,8 +21,9 @@ class Evaluation {
     var postuid: String!
     var middleExamination: String!
     var finalExamination: String!
+    var evaluationId: String!
     
-    init(className: String,teacherName: String,course: String,year: String,attendance: String,textbook: String,courseEvaluation: String,different: String,coursedetail: String,postuid: String,middleExamination: String,finalExamination: String) {
+    init(className: String,teacherName: String,course: String,year: String,attendance: String,textbook: String,courseEvaluation: String,different: String,coursedetail: String,postuid: String,middleExamination: String,finalExamination: String,evaluationId: String) {
         
         self.className = className
         self.teacherName = teacherName
@@ -36,6 +37,7 @@ class Evaluation {
         self.postuid = postuid
         self.middleExamination = middleExamination
         self.finalExamination = finalExamination
+        self.evaluationId = evaluationId
     }
     
     
