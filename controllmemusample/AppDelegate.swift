@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
-    var productArray = [Product]()
+    var productArray:Product!
     var cellOfNum:Int!
     var opposerid: String!
     var productid: String!
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var height: CGFloat!
     var posArray = [CGFloat]()
     var db: Firestore!
+    var id:String!
+    var segment:String!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 

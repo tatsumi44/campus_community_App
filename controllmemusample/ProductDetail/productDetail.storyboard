@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +27,9 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJD-RO-0f4">
                                                 <rect key="frame" x="60" y="27" width="255" height="279"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="DJD-RO-0f4" secondAttribute="height" multiplier="85:93" id="98V-uh-GUu"/>
+                                                </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmb-I3-Uib">
                                                 <rect key="frame" x="325" y="150" width="40" height="22"/>
@@ -45,7 +49,7 @@
                                                     <action selector="decideButton:" destination="nME-5n-Iuq" eventType="touchUpInside" id="wog-ZP-V0L"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuW-zj-UeA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuW-zj-UeA">
                                                 <rect key="frame" x="100" y="314" width="175" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -165,6 +169,11 @@
                                 <action selector="backViewContorollerButton:" destination="nME-5n-Iuq" id="3cX-Q4-Lbb"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="flag" id="5BY-k3-5UR">
+                            <connections>
+                                <action selector="report:" destination="nME-5n-Iuq" id="F2f-rB-TF1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
@@ -175,11 +184,20 @@
                         <outlet property="productDetail" destination="rzL-eb-iUO" id="E2J-10-PP5"/>
                         <outlet property="purchasedButton" destination="C2G-A1-GSK" id="dsZ-rk-Boz"/>
                         <outlet property="subTableView" destination="R0c-xc-ytK" id="L5s-PI-lnZ"/>
+                        <segue destination="JUb-mx-Jsw" kind="show" identifier="go" id="vRf-I1-cPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZL-1v-x5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1674.4000000000001" y="71.064467766116948"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="EzK-Ld-1UW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Report" id="JUb-mx-Jsw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8C-ZA-LJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2883" y="-21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A44-ZU-qeu">
@@ -202,6 +220,7 @@
     </scenes>
     <resources>
         <image name="back22.png" width="16" height="16"/>
+        <image name="flag" width="32" height="32"/>
         <image name="next22.png" width="16" height="16"/>
     </resources>
 </document>

@@ -17,15 +17,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラを使用てもよろしいですか？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>カメラ使うけどええかな？</string>
+	<string>ライブラリー使うけどええかな？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

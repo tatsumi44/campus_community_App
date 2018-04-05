@@ -65,8 +65,6 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
                     let ref = storage.child("image/goods/\(path)")
                     self.getmainArray.append(ref)
                 }
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.productArray = self.productArray
                 print("いいね")
                 print(self.getmainArray)
                 self.mainCollectionView.reloadData()
@@ -141,5 +139,6 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         cellOfNum = indexPath.row
         appDelegate.cellOfNum = self.cellOfNum
         appDelegate.sectionID = self.sectionID
+        appDelegate.productArray = self.productArray[cellOfNum]
     }
 }

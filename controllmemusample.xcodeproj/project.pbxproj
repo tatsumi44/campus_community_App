@@ -16,6 +16,7 @@
 		B917CF402049230C0074B846 /* Post.png in Resources */ = {isa = PBXBuildFile; fileRef = B917CF3F2049230C0074B846 /* Post.png */; };
 		B917CF4220497D3A0074B846 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B917CF4120497D3A0074B846 /* ChatList.swift */; };
 		B917CF442049A83E0074B846 /* PurchasedChatlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B917CF432049A83E0074B846 /* PurchasedChatlist.swift */; };
+		B92FEB012070AF6400D9AD74 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D8E9203F2FA00028EF07 /* Info.plist */; };
 		B935015A20404D08000F554B /* OtherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B935015920404D08000F554B /* OtherMenuViewController.swift */; };
 		B935015D20412609000F554B /* ProductContribution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B935015C20412609000F554B /* ProductContribution.storyboard */; };
 		B935015F20413ACF000F554B /* CategorySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B935015E20413ACE000F554B /* CategorySelectViewController.swift */; };
@@ -45,6 +46,8 @@
 		B97F9D1D2050C55100EADB20 /* CurriculumEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */; };
 		B97F9D1F2050C5DE00EADB20 /* curriculum.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9D1E2050C5DE00EADB20 /* curriculum.png */; };
 		B97F9D212050D23B00EADB20 /* PostEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */; };
+		B985DEB22075F8CE00EDE6CF /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B985DEB12075F8CE00EDE6CF /* ReportViewController.swift */; };
+		B985DEB42075F8E900EDE6CF /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B985DEB32075F8E900EDE6CF /* Report.storyboard */; };
 		B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C2204560E000EC7108 /* PurchasedViewController.swift */; };
 		B99025C520456A4700EC7108 /* PurchasedDetailChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */; };
 		B99B48242064C81800D7335F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B48232064C81800D7335F /* ChatModel.swift */; };
@@ -117,6 +120,8 @@
 		B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumEvaluationViewController.swift; sourceTree = "<group>"; };
 		B97F9D1E2050C5DE00EADB20 /* curriculum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curriculum.png; sourceTree = "<group>"; };
 		B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEvaluationViewController.swift; sourceTree = "<group>"; };
+		B985DEB12075F8CE00EDE6CF /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		B985DEB32075F8E900EDE6CF /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		B99025C2204560E000EC7108 /* PurchasedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedViewController.swift; sourceTree = "<group>"; };
 		B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedDetailChatViewController.swift; sourceTree = "<group>"; };
 		B99B48232064C81800D7335F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -259,7 +264,6 @@
 		B97F9CEE204E967700EADB20 /* resourse */ = {
 			isa = PBXGroup;
 			children = (
-				B935015620403554000F554B /* Auth */,
 				B9FCD6C92059964D0022EB9E /* hart.png */,
 				B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */,
 				B99B482920651ECE00D7335F /* kanematsu.jpg */,
@@ -317,6 +321,7 @@
 				B9D7D8E6203F2FA00028EF07 /* LaunchScreen.storyboard */,
 				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
 				B97F9CEE204E967700EADB20 /* resourse */,
+				B935015620403554000F554B /* Auth */,
 				B9D7D90620401B650028EF07 /* PuroductList_storybord */,
 				B935018620430C07000F554B /* ProductContoribute */,
 				B935015B2041255D000F554B /* menu */,
@@ -327,6 +332,8 @@
 				B93C8AF72051172A007ABFA7 /* evaluation */,
 				B9FCD6C42058F26C0022EB9E /* MyPostList */,
 				B9135E48206F673B00A87593 /* helper.swift */,
+				B985DEB12075F8CE00EDE6CF /* ReportViewController.swift */,
+				B985DEB32075F8E900EDE6CF /* Report.storyboard */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -431,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B985DEB42075F8E900EDE6CF /* Report.storyboard in Resources */,
 				B97F9D1F2050C5DE00EADB20 /* curriculum.png in Resources */,
 				B935019920440B86000F554B /* Chat.storyboard in Resources */,
 				B9FCD6CA2059964D0022EB9E /* hart.png in Resources */,
@@ -451,6 +459,7 @@
 				B9D7D8F2203F2FFD0028EF07 /* B.storyboard in Resources */,
 				B93501902043D743000F554B /* productDetail.storyboard in Resources */,
 				B97F9CE3204A8A5200EADB20 /* trade.png in Resources */,
+				B92FEB012070AF6400D9AD74 /* Info.plist in Resources */,
 				B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */,
 				B93501952043E5FC000F554B /* back22.png in Resources */,
 				B97F9CE1204A8A3300EADB20 /* option.png in Resources */,
@@ -558,6 +567,7 @@
 				B935019B20440CB0000F554B /* ChatViewController.swift in Sources */,
 				B93501922043D7BA000F554B /* ProductDetailViewController.swift in Sources */,
 				B9FCD6CC20599C2A0022EB9E /* MyPostEventListViewController.swift in Sources */,
+				B985DEB22075F8CE00EDE6CF /* ReportViewController.swift in Sources */,
 				B917607B206CC02D0019B2DC /* CurriculumDetailViewController.swift in Sources */,
 				B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */,
 				B9D7D8FC203F33970028EF07 /* PageViewController.swift in Sources */,

@@ -66,8 +66,6 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
                     let ref = storage.child("image/goods/\(path)")
                     self.getmainArray.append(ref)
                 }
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.productArray = self.productArray
                 print("いいね")
                 print(self.getmainArray)
                 self.mainCollectionView.reloadData()
@@ -141,6 +139,7 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         cellOfNum = indexPath.row
         appDelegate.cellOfNum = self.cellOfNum
         appDelegate.sectionID = self.sectionID
+        appDelegate.productArray = self.productArray[cellOfNum]
     }
     
 }

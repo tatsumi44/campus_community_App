@@ -21,7 +21,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
     @IBOutlet weak var mainScrollView: UIScrollView!
     
     
-    var productArray = [Product]()
+    var productArray: Product!
     var cellOfNum: Int!
     var db: Firestore!
     var exhibitationName: String!
@@ -87,7 +87,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
         self.cellOfNum = appDelegate.cellOfNum
         self.sectionID = appDelegate.sectionID
         
-        exhibitationID = self.productArray[self.cellOfNum].uid
+        exhibitationID = self.productArray.uid
         db = Firestore.firestore()
         let storage = Storage.storage().reference()
         
@@ -108,26 +108,26 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
             }else{
                 let data = snap?.data()
                 let name = data!["name"] as? String
-                self.productContentsArray = [self.productArray[self.cellOfNum].productName,self.productArray[self.cellOfNum].price,self.productArray[self.cellOfNum].place,name!,self.sectionName]
+                self.productContentsArray = [self.productArray.productName,self.productArray.price,self.productArray.place,name!,self.sectionName]
                 self.mainTableView.reloadData()
-                self.productDetail.text = self.productArray[self.cellOfNum].detail
+                self.productDetail.text = self.productArray.detail
                 //                self.placeLabel.text = self.exhibitationName
             }
         }
-        print(self.productArray[self.cellOfNum].productID)
+        print(self.productArray.productID)
         
-        print(self.productArray[self.cellOfNum].imageArray)
-        print(self.productArray[self.cellOfNum].imageArray.count)
-        imageCount = self.productArray[self.cellOfNum].imageArray.count
+        print(self.productArray.imageArray)
+        print(self.productArray.imageArray.count)
+        imageCount = self.productArray.imageArray.count
         imageCountLabel.text = "\(imageNum+1)/\(imageCount!)"
         
         switch imageCount {
         case 3:
-            imagePathArray = [self.productArray[self.cellOfNum].imageArray[0],self.productArray[self.cellOfNum].imageArray[1],self.productArray[self.cellOfNum].imageArray[2]]
+            imagePathArray = [self.productArray.imageArray[0],self.productArray.imageArray[1],self.productArray.imageArray[2]]
         case 2:
-            imagePathArray = [self.productArray[self.cellOfNum].imageArray[0],self.productArray[self.cellOfNum].imageArray[1]]
+            imagePathArray = [self.productArray.imageArray[0],self.productArray.imageArray[1]]
         case 1:
-            imagePathArray = [self.productArray[self.cellOfNum].imageArray[0]]
+            imagePathArray = [self.productArray.imageArray[0]]
         default:
             return
         }
@@ -197,8 +197,8 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
         let alertController = UIAlertController(title: "購入確認", message: "本当にこの商品を購入してよろしいですか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             print("ok")
-            self.opposerid = self.productArray[self.cellOfNum].uid
-            self.productid = self.productArray[self.cellOfNum].productID
+            self.opposerid = self.productArray.uid
+            self.productid = self.productArray.productID
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             //            appDelegate.myuid = self.myuid
             self.sectionID = appDelegate.sectionID
@@ -210,7 +210,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
                 "buyerID": self.myuid,
                 "productID": self.productid,
                 "sectionID": String(self.sectionID),
-                "imagePath": self.productArray[self.cellOfNum].imageArray[0]
+                "imagePath": self.productArray.imageArray[0]
                 ])
             let storyboard: UIStoryboard = UIStoryboard(name: "Chat", bundle: nil)
             let nextView = storyboard.instantiateInitialViewController()
@@ -270,6 +270,13 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
     
     @IBAction func backViewContorollerButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func report(_ sender: Any) {
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = productArray.productID
+        appDelegate.segment = "productReport"
+        performSegue(withIdentifier: "go", sender: nil)
     }
     
 }

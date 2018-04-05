@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 class MyPostEventListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var mainTableView: UITableView!
     var db: Firestore!
     var eventArray = [Event]()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTableView.dataSource = self
@@ -53,14 +54,42 @@ class MyPostEventListViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let titleLabel = cell.contentView.viewWithTag(1) as! UILabel
-        let dateLabel = cell.contentView.viewWithTag(2) as! UILabel
-        let detailLabel = cell.contentView.viewWithTag(3) as! UILabel
-       
+        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        let dateLabel = cell.contentView.viewWithTag(3) as! UILabel
+        let detailLabel = cell.contentView.viewWithTag(4) as! UILabel
+        let nameLabel = cell.contentView.viewWithTag(5) as! UILabel
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = true
         titleLabel.text = eventArray[indexPath.row].eventTitle
         dateLabel.text = eventArray[indexPath.row].eventDate
         detailLabel.text = eventArray[indexPath.row].evetDetail
+        db = Firestore.firestore()
+        let storage = Storage.storage().reference()
+        if let uid = Auth.auth().currentUser?.uid{
+            db.collection("users").document(uid).getDocument(completion: { (snap, error) in
+                if let error = error{
+                    self.alert(message: error.localizedDescription)
+                }else{
+                   let data = snap?.data()
+                    let name = data!["name"] as! String
+                    nameLabel.text = name
+                    let path = data!["profilePath"] as! String
+                    let profilePath = storage.child("image/profile/\(path)")
+                    profilePath.downloadURL { url, error in
+                        if let error = error {
+                            self.alert(message: error.localizedDescription)
+                            print(error.localizedDescription)
+                            // Handle any errors
+                        } else {
+                            //imageViewに描画、SDWebImageライブラリを使用して描画
+                            imageView.sd_setImage(with: url!, completed: nil)
+                        }
+                    }
+                }
+            })
+        }
+        
         
         return cell
     }

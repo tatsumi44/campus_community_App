@@ -96,8 +96,6 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
                     let ref = storage.child("image/goods/\(path)")
                     self.getmainArray.append(ref)
                 }
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.productArray = self.productArray
                 print("いいね")
                 print(self.getmainArray)
                 self.mainCollectionView.reloadData()
@@ -157,7 +155,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         print("これは\([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])")
-        cellOfPosArray.append([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])
+        
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         imageView.frame.size.width = cell.frame.width
         imageView.frame.size.height = cell.frame.height/4 * 3
@@ -192,7 +190,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        cellOfPosArray.append([mainCollectionView.frame.origin.x,mainCollectionView.frame.origin.y,mainCollectionView.frame.size.width/3 - 3,mainCollectionView.frame.size.height/3 - 3])
         let cellSize1:CGFloat = mainCollectionView.frame.size.width/3 - 3
         let cellSize2: CGFloat = mainCollectionView.frame.size.height/3 - 3
         return CGSize(width: cellSize1, height: cellSize2)
@@ -212,6 +210,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         cellOfNum = indexPath.row
         appDelegate.cellOfNum = self.cellOfNum
         appDelegate.sectionID = self.sectionID
+        appDelegate.productArray = self.productArray[cellOfNum]
     }
     
     //Instructionsライブラリを使うために必須
@@ -245,7 +244,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         pointOfInterest1.frame = CGRect(x: posArray[2]/5, y: posArray[1], width: posArray[2]/5, height: posArray[3])
         pointOfInterest2.frame = CGRect(x: posArray[2]/5 * 2, y: posArray[1], width: posArray[2]/5, height: posArray[3])
         pointOfInterest3.frame = CGRect(x: posArray[2]/5 * 3, y: posArray[1], width: posArray[2]/5, height: posArray[3])
-        pointOfInterest4.frame = CGRect(x: 300, y:0, width: 70, height: 60)
+        pointOfInterest4.frame = CGRect(x: 320, y:0, width: 60, height: 60)
         pointOfInterest5.frame = CGRect(x: cellOfPosArray[0][0], y: cellOfPosArray[0][1], width: cellOfPosArray[0][2], height: cellOfPosArray[0][3])
         
         
