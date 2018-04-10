@@ -130,12 +130,25 @@ class EmailRegisterViewController: UIViewController,UITextFieldDelegate ,UIPicke
                         "firstViewIntroduction" : false,
                         "produntDetailIntroduction": false,
                         ])
-                    let storyboard = UIStoryboard(name: "A", bundle: nil)
-                    let dstView = storyboard.instantiateViewController(withIdentifier: "FirstViewController")
-                    self.tabBarController?.present(dstView, animated: true, completion: nil)
-                    //ウルトラ重要、おそらくrootViewControllerが重なっているので解放が必要。
-                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+//                    let storyboard = UIStoryboard(name: "A", bundle: nil)
+//                    let dstView = storyboard.instantiateViewController(withIdentifier: "FirstViewController")
+//                    self.tabBarController?.present(dstView, animated: true, completion: nil)
+//                    //ウルトラ重要、おそらくrootViewControllerが重なっているので解放が必要。
+//                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+                    let actionCodeSettings = ActionCodeSettings()
+                    actionCodeSettings.url = URL(string: "https://u8qgg.app.goo.gl/top1")
+                    actionCodeSettings.handleCodeInApp = true
+                    print(Bundle.main.bundleIdentifier!)
+                    actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+                    Auth.auth().currentUser?.sendEmailVerification(with: actionCodeSettings, completion: { (error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }else{
+                            print("success")
+                        }
+                    })
                 }
+
             }
         }
     }

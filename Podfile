@@ -15,6 +15,7 @@ target 'controllmemusample' do
   pod 'Instructions', '~> 1.0.0'
   pod 'MessageKit'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
 
 
   # Pods for controllmemusample

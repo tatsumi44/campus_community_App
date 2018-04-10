@@ -243,6 +243,10 @@ Copyright 2018 Google
 
 Copyright 2018 Google
 
+## FirebaseDynamicLinks
+
+Copyright 2018 Google
+
 ## FirebaseFirestore
 
 Copyright 2018 Google
